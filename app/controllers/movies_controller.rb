@@ -9,16 +9,36 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.with_ratings(params[:ratings])
     @all_ratings = ['G','PG','PG-13','R']
-    @ratings_to_show = []
+    @ratings_to_show = params[:ratings] || session[:ratings] || Hash[@all_ratings.map { |r| [r, 1] }]
 
-    case params[:sort]
+    ratings = params[:ratings] || session[:ratings] || Hash[@all_ratings.map { |r| [r, 1] }]
+    sort = params[:sort] || session[:sort]
+
+    case sort
     when 'title'
       @title_header = 'hilite'
     when 'release_date'
       @release_date_header = 'hilite'
     end
 
-    if params[:sort]
+    if ratings.length == 0
+      Hash[ratings.map {|rating| [rating, rating]}]
+    end
+
+    if params[:sort] != session[:sort]
+      session[:sort] = sort
+      redirect_to :sort => sort, :ratings => ratings
+      return
+    end
+    
+    if params[:ratings] != session[:ratings] 
+      session[:sort] = sort
+      session[:ratings] = ratings
+      redirect_to :sort => sort, :ratings => ratings
+      return
+    end
+
+    if sort
       @movies = Movie.with_ratings(params[:ratings]).order(params[:sort])
     else
       @movies = Movie.with_ratings(params[:ratings])
