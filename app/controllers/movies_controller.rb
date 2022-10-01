@@ -10,6 +10,19 @@ class MoviesController < ApplicationController
     @movies = Movie.with_ratings(params[:ratings])
     @all_ratings = ['G','PG','PG-13','R']
     @ratings_to_show = []
+
+    case params[:sort]
+    when 'title'
+      @title_header = 'hilite'
+    when 'release_date'
+      @release_date_header = 'hilite'
+    end
+
+    if params[:sort]
+      @movies = Movie.with_ratings(params[:ratings]).order(params[:sort])
+    else
+      @movies = Movie.with_ratings(params[:ratings])
+    end
   end
 
   def new
