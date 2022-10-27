@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
     def self.all_halls
-      ['John Jay', 'JJ', 'Ferrys Booth Commons']
+      ['John Jay', 'JJ', 'Ferris Booth Commons']
     end
     # def self.with_ratings(ratings, sort_by)
     #   if ratings.nil?

@@ -17,7 +17,10 @@ dishes = [
   # { title: 'The Incredibles', rating: 'PG', release_date: '5-Nov-2004' },
   # { title: 'Raiders of the Lost Ark', rating: 'PG', release_date: '12-Jun-1981' },
   # { title: 'Chicken Run', rating: 'G', release_date: '21-Jun-2000' },
-  { name: 'BBQ chicken', hall: 'John Jay', property: 'normal', calories: 200 },
+  { name: 'Roasted Pork Loin', hall: 'Ferris Booth Commons', property: 'normal', calories: 100 },
+  { name: 'Yellow Rice', hall: 'John Jay', property: 'gluten free', calories: 140 },
+  { name: 'Vegatable Medley', hall: 'Ferris Booth Commons', property: 'halal', calories: 60 },
+  { name: 'Fish and Chips', hall: 'JJ', property: 'normal', calories: 220 },
 ]
 
 dishes.each do |dish|

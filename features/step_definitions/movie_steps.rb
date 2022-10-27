@@ -1,17 +1,22 @@
 # Add a declarative step here for populating the DB with movies.
 
-Given /the following movies exist/ do |movies_table|
-  movies_table.hashes.each do |movie|
+Given /the following dishes exist/ do |dishes_table|
+  dishes_table.hashes.each do |dish|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
-    Movie.create(movie)
+    Dish.create(dish)
   end
   # pending "Fill in this step in movie_steps.rb"
 end
 
-Then /(.*) seed movies should exist/ do | n_seeds |
+Then /(.*) seed dishes should exist/ do | n_seeds |
   # expect(Movie.count).to eq n_seeds.to_i
-  Movie.count.should be n_seeds.to_i
+  Dish.count.should be n_seeds.to_i
+end
+
+Then /I seed name: (.*), hall: (.*), property: (.*), caleories: (.*)/ do | name, hall, property, calories |
+  # expect(Movie.count).to eq n_seeds.to_i
+  Dish.create({ name: name, hall: hall, property: property, calories: calories.to_i })
 end
 
 # Make sure that one string (regexp) occurs before or after another one
