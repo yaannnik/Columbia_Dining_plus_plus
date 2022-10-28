@@ -1,0 +1,44 @@
+<!--  This file is app/views/movies/index.html.erb -->
+<h2>All Dishes</h2>
+
+<%#  Part 2: Start here... %>
+
+<table class="table table-striped col-md-12" id="dishes">
+  <thead>
+    <tr>
+    <th>Dish name</th>
+    <th>Hall</th>
+    <th>
+      <%= link_to 'Property',
+        dishes_path(sort_by: 'property'), id: 'property_header', class: ('bg-warning hilite' if @sort_by == 'property') %>
+    </th>
+    <th>
+      <%= link_to 'Calories', dishes_path(sort_by: 'calories'), id: 'calories_header', class: ('bg-warning hilite' if @sort_by == 'calories') %>
+    </th>
+    <th>More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dishes.each do |dish| %>
+      <tr>
+        <td>
+          <%= dish.name %>
+        </td>
+        <td>
+          <%= dish.hall %>
+        </td>
+        <td>
+          <%= dish.property %>
+        </td>
+        <td>
+          <%= dish.calories %>
+        </td>
+        <td>
+          <%= link_to "More about #{dish.name}", dish_path(dish) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new dish', new_dish_path, :class => 'btn btn-primary' %>
+
