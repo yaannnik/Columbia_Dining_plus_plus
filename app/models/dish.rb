@@ -2,11 +2,11 @@ class Dish < ActiveRecord::Base
     def self.all_halls
       ['John Jay', 'JJ', 'Ferris Booth Commons']
     end
-    # def self.with_ratings(ratings, sort_by)
-    #   if ratings.nil?
-    #     all.order sort_by
-    #   else
-    #     where(rating: ratings.map(&:upcase)).order sort_by
-    #   end
-    # end
+    def self.with_calories(calories, sort_by)
+      if calories.nil?
+        all.order sort_by
+      else
+        where(calories: calories.map(&:upcase)).order sort_by
+      end
+    end
   end
