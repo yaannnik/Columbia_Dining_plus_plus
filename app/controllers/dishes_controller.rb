@@ -4,14 +4,16 @@ class DishesController < ApplicationController
   def show
     id = params[:id] # retrieve movie ID from URI route
     @dish = Dish.find(id) # look up movie by unique ID
-    # will render app/views/movies/show.<extension> by default
+    # will render app/views/dishes/show.<extension> by default
   end
 
   def index
+    @dishes = Dish.with_orders(sort_by)
     @all_halls = Dish.all_halls
-    @dishes = Dish.all
+    # @dishes = Dish.all
     # @ratings_to_show_hash = ratings_hash
     @sort_by = sort_by
+    # @dishes = Dish.all(:order => sort_by)
   end
 
   def new
@@ -21,7 +23,7 @@ class DishesController < ApplicationController
   def create
     @Dish = Dish.create!(dish_params)
     flash[:notice] = "#{@Dish.title} was successfully created."
-    redirect_to movies_path
+    # redirect_to movies_path
   end
 
   def edit

@@ -10,12 +10,10 @@
     <th>Hall</th>
     <th>
       <%= link_to 'Property',
-        dish_path({sort_by: 'property'}),
-            id: 'property_header', class: ('bg-warning hilite' if @sort_by == 'property') %>
+        dishes_path(sort_by: 'property'), id: 'property_header', class: ('bg-warning hilite' if @sort_by == 'property') %>
     </th>
     <th>
-      <%= link_to 'Calories', dish_path({sort_by: 'calories'}),
-                    id: 'calories_header', class: ('bg-warning hilite' if @sort_by == 'calories') %>
+      <%= link_to 'Calories', dishes_path(sort_by: 'calories'), id: 'calories_header', class: ('bg-warning hilite' if @sort_by == 'calories') %>
     </th>
     <th>More Info</th>
     </tr>
