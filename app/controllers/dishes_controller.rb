@@ -23,8 +23,8 @@ class DishesController < ApplicationController
   
     def create
       @Dish = Dish.create!(dish_params)
-      flash[:notice] = "#{@Dish.title} was successfully created."
-      redirect_to movies_path
+      flash[:notice] = "#{@Dish.name} was successfully created."
+      redirect_to dishes_path
     end
   
     def edit
