@@ -14,9 +14,9 @@ Then /(.*) seed dishes should exist/ do | n_seeds |
   Dish.count.should be n_seeds.to_i
 end
 
-Then /I seed name: (.*), hall: (.*), property: (.*), caleories: (.*)/ do | name, hall, property, calories |
+Then /I seed name: (.*), hall: (.*), property: (.*), calories: (.*)/ do | name, hall, property, calories |
   # expect(Movie.count).to eq n_seeds.to_i
-  Dish.create({ name: name, hall: hall, property: property, calories: calories.to_i })
+  Dish.create!(name: name, hall: hall, property: property, calories: calories.to_i)
 end
 
 # Make sure that one string (regexp) occurs before or after another one
