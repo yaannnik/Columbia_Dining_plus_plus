@@ -1,13 +1,15 @@
-<h2>Create New Movie</h2>
+<h2>Create New Dish</h2>
 
-<%= form_tag movies_path, class: 'form' do %>
-  <%= label :movie, :title, 'Title', class: 'col-form-label' %>
-  <%= text_field :movie, :title, class: 'form-control' %>
-  <%= label :movie, :rating, 'Rating', class: 'col-form-label' %>
-  <%= select :movie, :rating, ['G','PG','PG-13','R'], {}, {class: 'form-control col-1'} %>
-  <%= label :movie, :release_date, 'Released On', class: 'col-form-label' %>
-  <%= date_select :movie, :release_date, {}, class: 'form-control col-2 d-inline' %>
+<%= form_tag dishes_path, class: 'form' do %>
+  <%= label :dish, :name, 'name', class: 'col-form-label' %>
+  <%= text_field :dish, :name, class: 'form-control' %>
+  <%= label :dish, :hall, 'hall', class: 'col-form-label' %>
+  <%= select :dish, :hall, ['John Jay','Ferris Booth Commons','JJ'], {}, {class: 'form-control col-1'} %>
+  <%= label :dish, :property, 'property', class: 'col-form-label' %>
+  <%= text_field :dish, :property, class: 'form-control' %>
+  <%= label :dish, :calories, 'calories', class: 'col-form-label' %>
+  <%= text_field :dish, :calories, class: 'form-control' %>
   <br/>
   <%= submit_tag 'Save Changes', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', movies_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Cancel', dishes_path, class: 'btn btn-secondary' %>
 <% end %>
