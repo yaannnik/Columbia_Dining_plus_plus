@@ -1,8 +1,6 @@
-#Columbia Dining++
+# Columbia Dining++
 
-
-
-###Team Members
+### Team Members
 
 Member 1 Name: Jing Peng
 Member 1 UNI: jp4081
@@ -18,7 +16,7 @@ Member 4 UNI: yy3089
 
 
 
-###Environment
+### Environment
 
 - ruby --version == 2.6.0
 - rails --version == 4.2.11
@@ -57,7 +55,7 @@ Scenario: show number of total dishes in database
   And I should see "Fish and Chips"
 
 Scenario: add new dishes in database
-  When I follow "new"
+  When I follow "Add new dish"
   And I should see "Create New Dish"
   And I fill in "name" with "Marinara Sauce"
   And I select "John Jay" from "hall"
@@ -65,6 +63,12 @@ Scenario: add new dishes in database
   And I fill in "calories" with "120"
   And I press "Save Changes"
   And I should see "Marinara Sauce"
+  
+Scenario: see Details about dishes in database
+  When I follow "More about Yello Rice"
+  And I should see "Details about Yello Rice"
+  And I should see "Name: Yello Rice"
+  And I should see "Hall: John Jay"
   
 ```
 
@@ -74,7 +78,7 @@ Scenario: add new dishes in database
 
 ### Instruction
 
-####Run
+#### Run
 
 First run `bundle install` to install all necessary dependencies;
 
@@ -84,7 +88,7 @@ Use `rails server -b 0.0.0.0` to start our SaaS.
 
 
 
-####Test
+#### Test
 
 To test the user stories written in Cucumber, run `rake cucumber` to see the test results.
 

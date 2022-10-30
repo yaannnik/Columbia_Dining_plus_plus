@@ -25,7 +25,7 @@ Scenario: show number of total dishes in database
   And I should see "Fish and Chips"
 
 Scenario: add new dishes in database
-  When I follow "new"
+  When I follow "Add new dish"
   And I should see "Create New Dish"
   And I fill in "name" with "Marinara Sauce"
   And I select "John Jay" from "hall"
@@ -34,3 +34,8 @@ Scenario: add new dishes in database
   And I press "Save Changes"
   And I should see "Marinara Sauce"
   
+Scenario: see Details about dishes in database
+  When I follow "More about Yello Rice"
+  And I should see "Details about Yello Rice"
+  And I should see "Name: Yello Rice"
+  And I should see "Hall: John Jay"

@@ -21,27 +21,27 @@ class DishesController < ApplicationController
   end
 
   def create
-    @Dish = Dish.create!(dish_params)
-    flash[:notice] = "#{@Dish.name} was successfully created."
+    @dish = Dish.create!(dish_params)
+    flash[:notice] = "#{@dish.name} was successfully created."
     redirect_to dishes_path
   end
 
   def edit
-    @Dish = Dish.find params[:id]
+    @dish = Dish.find params[:id]
   end
 
   def update
     @dish = Dish.find params[:id]
     @dish.update_attributes!(dish_params)
-    flash[:notice] = "#{@dish.title} was successfully updated."
-    # redirect_to movie_path(@dish)
+    flash[:notice] = "#{@dish.name} was successfully updated."
+    redirect_to dishes_path(@dish)
   end
 
   def destroy
     @dish = Dish.find(params[:id])
     @dish.destroy
-    flash[:notice] = "Dish '#{@dish.title}' deleted."
-    # redirect_to movies_path
+    flash[:notice] = "Dish '#{@dish.name}' deleted."
+    redirect_to dishes_path
   end
 
   # def force_index_redirect
