@@ -1,4 +1,4 @@
-Rottenpotatoes::Application.configure do
+Columbia_dining_plus_plus::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests

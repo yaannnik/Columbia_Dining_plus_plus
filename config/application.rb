@@ -11,7 +11,7 @@ require "rails/all"
 
 Bundler.require(:default, Rails.env)
 
-module Rottenpotatoes
+module Columbia_dining_plus_plus
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
