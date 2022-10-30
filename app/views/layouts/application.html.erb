@@ -4,21 +4,105 @@
   <head>
     <title>Columbia Dining++</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./application.css" type="text/css">
     <%= stylesheet_link_tag 'application', 'media' => 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <%# These classes come from the Bootstrap CSS framework. %>
-    <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
-      <h1 class="title">Columbia Dining++</h1>
+    <nav class="navbar navbar-expand-lg bg-primary navbar-custom navbar-dark text-black">
+      <%= image_tag("Columbia_shield.png", width:'100px') %> 
+      <h1 class="title" style="font-size:50px; padding-left:10px">Columbia Dining++</h1>
     </nav>
-    <div class="container">
+    <div id="homeImage" style="margin:0px; width:100%; height:500px; overflow:hidden; background-image: url('/assets/DiningHall.png'); background-size:cover;">    
+      <div id="ImageText" class="row" style="width:100%; margin:0px; margin-top:100px; padding:0px; color:white; display: flex;
+        align-items: center; 
+        justify-content: center;">
+        <div class="row" style="width:100%; margin:0px; padding:0px; color:white; display: flex; transform: scale(1.2, 1);
+          align-items: center; 
+          justify-content: center;">
+          <h1 class="">GUESS</h1>
+        </div>
+        <div class="row" style="width:100%; margin:0px; padding:0px; color:white; display: flex; transform: scale(1.2, 1);
+          align-items: center; 
+          justify-content: center;">
+          <h2 class="">Great food. Great service. Great people.</h2>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:20px">
       <%# Render "flash" messages in our application. This loads _flash.erb %>
       <%= render 'layouts/flash' %>
       <main id="main">
         <%= yield %>
       </main>
     </div>
+
+    <section id="contacts">
+      <div>
+        <div>
+          <div id="feel">FEEL FREE TO CONTACT US</div>
+          <input type="email" id="email" placeholder="E-mail" />
+          <input type="text" id="subject" placeholder="Subject" />
+          <input type="text" id="message" placeholder="Message" />
+          <input type="submit" id="send" value="SEND" />
+        </div>
+        <div>
+          <div id="con">
+            <p>Contacts</p>
+            <p>Make any menu on your own 
+              <br/>Create a dining look you want.</p>
+            <p>
+              <%= image_tag("Map-icon.png", width:'20px') %>  2760 Broadway
+              <br/>New York, NY 10025</p>
+            <p>
+              <%= image_tag("Phone-icon.png", width:'20px') %>  (646)286-2132</p>
+            <p>
+              <%= image_tag("Email-icon.png", width:'20px') %>  jp4081@columbia.edu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <div>
+          <p>LEARN MORE</p>
+          <p>How it works?</p>
+          <p>Meeting tools</p>
+          <p>Live streaming</p>
+          <p>Contact Method</p>
+        </div>
+      <div>
+        <p>ABOUT US</p>
+        <P>About us</P>
+        <p>Features</p>
+        <p>Privacy police</p>
+        <p>Terms & Conditions</p>
+      </div>
+      <div>
+        <p>SUPPORT</p>
+        <p>FAQ</p>
+        <p>Contact us</p>
+        <p>Live chat</p>
+        <p>Phone call</p>
+      </div>
+      <div>
+        <p>ENJOY YOUR LIFE</p>
+        <p>Create web UI kit for designers,
+            <br/>freelancers or business.</p>
+        <p></p>
+        <p id="icon">
+          <%= image_tag("Twitter-icon.png", width:'20px') %>
+          <%= image_tag("Facebook-icon.png", width:'20px') %>
+          <%= image_tag("Google-icon.png", width:'20px') %>
+          <%= image_tag("Pinterest-icon.png", width:'20px') %>
+          <%= image_tag("LinkedIn-icon.png", width:'20px') %>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
