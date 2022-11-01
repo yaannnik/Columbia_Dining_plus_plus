@@ -90,6 +90,8 @@ Use `rails server -b 0.0.0.0` to start our SaaS.
 
 #### Test
 
+Our tests covers all the pages we have finished developed: the home page, the add page for new dishes and the show page for different dishes.
+
 To test the user stories written in Cucumber, run `rake cucumber` to see the test results.
 
 To run Rspec tests for our code, run `rake spec` to see the test results.
