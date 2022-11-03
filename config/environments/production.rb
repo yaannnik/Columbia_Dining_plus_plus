@@ -1,4 +1,4 @@
-Rottenpotatoes::Application.configure do
+Columbia_dining_plus_plus::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -33,7 +33,7 @@ Rottenpotatoes::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  See everything in the log (default is :info)
+  # See everything in the log (default is :info)
   config.log_level = :debug
 
   # Use a different logger for distributed setups

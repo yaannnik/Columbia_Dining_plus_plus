@@ -95,3 +95,8 @@ Our tests covers all the pages we have finished developed: the home page, the ad
 To test the user stories written in Cucumber, run `rake cucumber` to see the test results.
 
 To run Rspec tests for our code, run `rake spec` to see the test results.
+
+
+### Deployment
+
+See our deployment on https://guarded-river-21686.herokuapp.com/dishes
