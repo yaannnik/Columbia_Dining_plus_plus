@@ -34,8 +34,32 @@ Scenario: add new dishes in database
   And I press "Save Changes"
   And I should see "Marinara Sauce"
   
-Scenario: see Details about dishes in database
+Scenario: see details about dishes in database
   When I follow "More about Yello Rice"
   And I should see "Details about Yello Rice"
   And I should see "Name: Yello Rice"
   And I should see "Hall: John Jay"
+
+Scenario: edit details about dishes in database
+  When I follow "More about Yello Rice"
+  And I follow "Edit"
+  And I fill in "Name" with "Yellow Rice"
+  And I select "John Jay" from "Hall"
+  And I fill in "Property" with "gluten free"
+  And I fill in "Calories" with "140"
+  And I press "Update Dish Info"
+  And I follow "Back to dish list"
+  And I should see "Yellow Rice"
+  And I should not see "Yello Rice"
+
+Scenario: sort dishes according to their calories
+  When I follow "Calories"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+  Then I should see "Roasted Pork Loin" before "Yello Rice"
+  Then I should see "Yello Rice" before "Fish and Chips"
+
+Scenario: sort dishes according to their properties
+  When I follow "Property"
+  Then I should see "Yello Rice" before "Vegetable Medley"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+  Then I should see "Roasted Pork Loin" before "Fish and Chips"

@@ -22,7 +22,7 @@
         <div class="row" style="width:100%; margin:0px; padding:0px; color:white; display: flex; transform: scale(1.2, 1);
           align-items: center; 
           justify-content: center;">
-          <h1 class="">GUESS</h1>
+          <h1 class="">Columbia Dining++</h1>
         </div>
         <div class="row" style="width:100%; margin:0px; padding:0px; color:white; display: flex; transform: scale(1.2, 1);
           align-items: center; 
@@ -45,10 +45,12 @@
       <div>
         <div>
           <div id="feel">FEEL FREE TO CONTACT US</div>
-          <input type="email" id="email" placeholder="E-mail" />
-          <input type="text" id="subject" placeholder="Subject" />
-          <input type="text" id="message" placeholder="Message" />
-          <input type="submit" id="send" value="SEND" />
+          <form method="POST" action="https://formspree.io/f/xqknvjaj">
+                <input type="subject" name="_subject" id="subject" value="Feedback from Columbia Dining++" />
+                <input type="email" name="_replyto" id="email" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your feedback" id="message" required></textarea>
+                <button type="submit" id="send">Send</button>
+            </form>
         </div>
         <div>
           <div id="con">
@@ -58,10 +60,10 @@
             <p>
               <%= image_tag("Map-icon.png", width:'20px') %>  2760 Broadway
               <br/>New York, NY 10025</p>
-            <p>
+            <!--p>
               <%= image_tag("Phone-icon.png", width:'20px') %>  (646)286-2132</p>
             <p>
-              <%= image_tag("Email-icon.png", width:'20px') %>  jp4081@columbia.edu</p>
+              <%= image_tag("Email-icon.png", width:'20px') %>  jp4081@columbia.edu</p-->
           </div>
         </div>
       </div>
