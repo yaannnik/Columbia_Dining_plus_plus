@@ -31,10 +31,10 @@ class DishesController < ApplicationController
   end
 
   def update
-    @dish = Dish.find params[:id]
+    @dish = Dish.find(params[:id])
     @dish.update_attributes!(dish_params)
     flash[:notice] = "#{@dish.name} was successfully updated."
-    redirect_to dishes_path(@dish)
+    redirect_to dish_path(@dish)
   end
 
   def destroy
