@@ -8,11 +8,13 @@ class DishesController < ApplicationController
   end
 
   def index
-    @dishes = Dish.with_orders(sort_by)
+    # @dishes = Dish.with_filter(@hall_filter, sort_by)
+    # @dishes = Dish.with_orders(sort_by)
     @all_halls = Dish.all_halls
-    # @dishes = Dish.all
     # @ratings_to_show_hash = ratings_hash
+    @hall_filter = params[:cur_hall] || session[:cur_hall]
     @sort_by = sort_by
+    @dishes = Dish.with_filter(@hall_filter, sort_by)
     # @dishes = Dish.all(:order => sort_by)
   end
 
@@ -64,7 +66,7 @@ class DishesController < ApplicationController
   end
 
   def sort_by
-    params[:sort_by]|| 'id'
+    params[:sort_by]|| 'id' || session[:sort_by]
   end
 end
 

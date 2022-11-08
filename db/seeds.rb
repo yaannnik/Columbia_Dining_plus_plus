@@ -12,7 +12,7 @@ dishes = [
   { name: 'Vegatable Medley', hall: 'Ferris Booth Commons', property: 'halal', calories: 60, image: 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/10/1/FN_Sauteed-Vegetable-Medley_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1568400650030.jpeg' },
   { name: 'Fish and Chips', hall: 'JJ', property: 'normal', calories: 220, image: 'https://media-cdn.tripadvisor.com/media/photo-s/0f/32/0f/7e/fish-and-chips-in-seal.jpg' },
 ]
-
+Dish.delete_all()
 dishes.each do |dish|
   Dish.create!(dish)
 end
