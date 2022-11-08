@@ -22,7 +22,7 @@ dishes = [
   { name: 'Vegatable Medley', hall: 'Ferris Booth Commons', property: 'halal', calories: 60 },
   { name: 'Fish and Chips', hall: 'JJ', property: 'normal', calories: 220 },
 ]
-
+Dish.delete_all()
 dishes.each do |dish|
   Dish.create!(dish)
 end
