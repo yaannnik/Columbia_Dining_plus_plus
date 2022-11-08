@@ -7,20 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 dishes = [
-  # { title: 'Aladdin', rating: 'G', release_date: '25-Nov-1992' },
-  # { title: 'The Terminator', rating: 'R', release_date: '26-Oct-1984' },
-  # { title: 'When Harry Met Sally', rating: 'R', release_date: '21-Jul-1989' },
-  # { title: 'The Help', rating: 'PG-13', release_date: '10-Aug-2011' },
-  # { title: 'Chocolat', rating: 'PG-13', release_date: '5-Jan-2001' },
-  # { title: 'Amelie', rating: 'R', release_date: '25-Apr-2001' },
-  # { title: '2001: A Space Odyssey', rating: 'G', release_date: '6-Apr-1968' },
-  # { title: 'The Incredibles', rating: 'PG', release_date: '5-Nov-2004' },
-  # { title: 'Raiders of the Lost Ark', rating: 'PG', release_date: '12-Jun-1981' },
-  # { title: 'Chicken Run', rating: 'G', release_date: '21-Jun-2000' },
-  { name: 'Roasted Pork Loin', hall: 'Ferris Booth Commons', property: 'normal', calories: 100 },
-  { name: 'Yellow Rice', hall: 'John Jay', property: 'gluten free', calories: 140 },
-  { name: 'Vegatable Medley', hall: 'Ferris Booth Commons', property: 'halal', calories: 60 },
-  { name: 'Fish and Chips', hall: 'JJ', property: 'normal', calories: 220 },
+  { name: 'Roasted Pork Loin', hall: 'Ferris Booth Commons', property: 'normal', calories: 100, image: 'https://www.eatwell101.com/wp-content/uploads/2020/11/Pork-Tenderloin-Roast-1.jpg' },
+  { name: 'Yellow Rice', hall: 'John Jay', property: 'gluten free', calories: 140, image: 'https://www.favfamilyrecipes.com/wp-content/uploads/2022/01/Yellow-Rice-5-840x560.jpg' },
+  { name: 'Vegatable Medley', hall: 'Ferris Booth Commons', property: 'halal', calories: 60, image: 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/10/1/FN_Sauteed-Vegetable-Medley_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1568400650030.jpeg' },
+  { name: 'Fish and Chips', hall: 'JJ', property: 'normal', calories: 220, image: 'https://media-cdn.tripadvisor.com/media/photo-s/0f/32/0f/7e/fish-and-chips-in-seal.jpg' },
 ]
 
 dishes.each do |dish|

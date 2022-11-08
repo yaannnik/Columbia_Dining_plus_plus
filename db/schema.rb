@@ -18,15 +18,7 @@ ActiveRecord::Schema.define(version: 20221026232517) do
     t.string  "hall"
     t.string  "property"
     t.integer "calories"
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.string   "title"
-    t.string   "rating"
-    t.text     "description"
-    t.datetime "release_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "image"
   end
 
 end
