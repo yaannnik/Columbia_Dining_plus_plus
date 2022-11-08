@@ -27,10 +27,10 @@ Scenario: show number of total dishes in database
 Scenario: add new dishes in database
   When I follow "Add new dish"
   And I should see "Create New Dish"
-  And I fill in "name" with "Marinara Sauce"
-  And I select "John Jay" from "hall"
-  And I fill in "property" with "halal"
-  And I fill in "calories" with "120"
+  And I fill in "Name" with "Marinara Sauce"
+  And I select "John Jay" from "Hall"
+  And I fill in "Property" with "halal"
+  And I fill in "Calories" with "120"
   And I press "Save Changes"
   And I should see "Marinara Sauce"
   

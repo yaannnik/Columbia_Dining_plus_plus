@@ -60,7 +60,7 @@ class DishesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def dish_params
-    params.require(:dish).permit(:name, :hall, :property, :calories)
+    params.require(:dish).permit(:name, :hall, :property, :calories, :image)
   end
 
   def sort_by
