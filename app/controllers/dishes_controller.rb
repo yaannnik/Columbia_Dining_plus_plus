@@ -13,8 +13,22 @@ class DishesController < ApplicationController
     @all_halls = Dish.all_halls
     # @ratings_to_show_hash = ratings_hash
     @hall_filter = params[:cur_hall] || session[:cur_hall]
-    @sort_by = sort_by
-    @dishes = Dish.with_filter(@hall_filter, sort_by)
+    @sort_by = params[:sort_by] || session[:sort_by]
+
+    if params[:sort_by] != session[:sort_by]
+      session[:sort_by] = @sort_by
+      redirect_to :sort_by => @sort_by, :cur_hall => @hall_filter
+      return
+    end
+    
+    if params[:cur_hall] != session[:cur_hall] 
+      session[:sort_by] = @sort_by
+      session[:cur_hall] = @hall_filter 
+      redirect_to :sort_by => @sort_by, :cur_hall => @hall_filter
+      return
+    end
+
+    @dishes = Dish.with_filter(@hall_filter, @sort_by)
     # @dishes = Dish.all(:order => sort_by)
   end
 
