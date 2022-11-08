@@ -55,4 +55,14 @@ RSpec.describe DishesController, :type => :controller do
     end
   end
 
+  describe "GET the edit page for a dish" do
+    it "renders the edit page" do
+      Dish.delete_all
+      dish1 = { :id => 1, :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100 }
+      Dish.create(dish1)
+      get :edit, :id => 1
+      expect(response).to render_template("dishes/edit")
+    end
+  end
+
 end
