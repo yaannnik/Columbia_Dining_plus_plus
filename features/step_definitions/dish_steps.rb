@@ -33,46 +33,46 @@ end
 #  "When I uncheck the following ratings: PG, G, R"
 #  "When I check the following ratings: G"
 
-When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
-  # HINT: use String#split to split up the rating_list, then
-  #   iterate over the ratings and reuse the "When I check..." or
-  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  rating_list.split(',').each do |rating|
-    if uncheck
-      uncheck "ratings_#{rating.strip}"
-    else 
-      check "ratings_#{rating.strip}"
-    end
-  end  
-  # pending "Fill in this step in movie_steps.rb"
-end
+# When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
+#   # HINT: use String#split to split up the rating_list, then
+#   #   iterate over the ratings and reuse the "When I check..." or
+#   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+#   rating_list.split(',').each do |rating|
+#     if uncheck
+#       uncheck "ratings_#{rating.strip}"
+#     else 
+#       check "ratings_#{rating.strip}"
+#     end
+#   end  
+#   # pending "Fill in this step in movie_steps.rb"
+# end
 
 # Part 2, Step 3
-Then /^I should (not )?see the following movies: (.*)$/ do |no, movie_list|
-  # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
-  movie_list.split(',').each do |movie|
-    if no
-      expect(page).not_to have_content(movie)
-    else
-      expect(page).to have_content(movie)
-    end
-  end  
-  # pending "Fill in this step in movie_steps.rb"
-end
+# Then /^I should (not )?see the following movies: (.*)$/ do |no, movie_list|
+#   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
+#   movie_list.split(',').each do |movie|
+#     if no
+#       expect(page).not_to have_content(movie)
+#     else
+#       expect(page).to have_content(movie)
+#     end
+#   end  
+#   # pending "Fill in this step in movie_steps.rb"
+# end
 
-Then /I should see all the movies/ do
-  # Make sure that all the movies in the app are visible in the table
-  flag = true
-  Movie.all.each do |movie|
-    movie_title = /#{movie.title}/m
-    if !(page.body =~ movie_title) then
-      flag = false
-    end
-  end
+# Then /I should see all the movies/ do
+#   # Make sure that all the movies in the app are visible in the table
+#   flag = true
+#   Movie.all.each do |movie|
+#     movie_title = /#{movie.title}/m
+#     if !(page.body =~ movie_title) then
+#       flag = false
+#     end
+#   end
   
-  flag.should be true
-  # pending "Fill in this step in movie_steps.rb"
-end
+#   flag.should be true
+#   # pending "Fill in this step in movie_steps.rb"
+# end
 
 ### Utility Steps Just for this assignment.
 

@@ -64,7 +64,7 @@ Scenario: sort dishes according to their properties
   Then I should see "Vegetable Medley" before "Roasted Pork Loin"
   Then I should see "Roasted Pork Loin" before "Fish and Chips"
 
-Scenario: show dishes according to halls
+Scenario: show dishes in "John Jay's hall"
   When I select "John Jay" from "cur_hall"
   And I press "choose hall"
   And I should see "Yello Rice"
@@ -72,6 +72,7 @@ Scenario: show dishes according to halls
   And I should not see "Vegetable Medley"
   And I should not see "Fish and Chips"
 
+Scenario: show dishes in "JJ hall"
   When I select "JJ" from "cur_hall"
   And I press "choose hall"
   And I should not see "Yello Rice"
@@ -79,6 +80,7 @@ Scenario: show dishes according to halls
   And I should not see "Vegetable Medley"
   And I should see "Fish and Chips"
 
+Scenario: show dishes in "Ferris Booth Commons hall"
   When I select "Ferris Booth Commons" from "cur_hall"
   And I press "choose hall"
   And I should not see "Yello Rice"
