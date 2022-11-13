@@ -51,39 +51,3 @@ Scenario: edit details about dishes in database
   And I follow "Back to dish list"
   And I should see "Yellow Rice"
   And I should not see "Yello Rice"
-
-Scenario: sort dishes according to their calories
-  When I follow "Calories"
-  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
-  Then I should see "Roasted Pork Loin" before "Yello Rice"
-  Then I should see "Yello Rice" before "Fish and Chips"
-
-Scenario: sort dishes according to their properties
-  When I follow "Property"
-  Then I should see "Yello Rice" before "Vegetable Medley"
-  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
-  Then I should see "Roasted Pork Loin" before "Fish and Chips"
-
-Scenario: show dishes in "John Jay's hall"
-  When I select "John Jay" from "cur_hall"
-  And I press "choose hall"
-  And I should see "Yello Rice"
-  And I should not see "Roasted Pork Loin"
-  And I should not see "Vegetable Medley"
-  And I should not see "Fish and Chips"
-
-Scenario: show dishes in "JJ hall"
-  When I select "JJ" from "cur_hall"
-  And I press "choose hall"
-  And I should not see "Yello Rice"
-  And I should not see "Roasted Pork Loin"
-  And I should not see "Vegetable Medley"
-  And I should see "Fish and Chips"
-
-Scenario: show dishes in "Ferris Booth Commons hall"
-  When I select "Ferris Booth Commons" from "cur_hall"
-  And I press "choose hall"
-  And I should not see "Yello Rice"
-  And I should see "Roasted Pork Loin"
-  And I should see "Vegetable Medley"
-  And I should not see "Fish and Chips"

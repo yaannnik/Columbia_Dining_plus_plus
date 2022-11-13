@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Dish do
+    describe 'new' do
+      it "takes parameters and returns a Dish object" do      
+        @dish = Dish.new(name: "test_dish", hall: "John Jay", property: "normal", calories: 100)
+        expect(@dish).to be_an_instance_of(Dish)
+        expect(@dish.name).to eq('test_dish')
+        expect(@dish.hall).to eq('John Jay')
+        expect(@dish.property).to eq('normal')
+        expect(@dish.calories).to eq(100)
+      end
+    end
+
     describe "add new dish to database" do
       it "returns dishes added by customers" do
         Dish.delete_all
