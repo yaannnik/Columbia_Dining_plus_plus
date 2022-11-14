@@ -22,6 +22,11 @@
   <%= @dish.calories %>
 </p>
 
+<h3>Image:</h3>
+<p id="Image">
+  <%= image_tag(@dish.image, height:'256px', width:'256px') %>
+</p>
+
 <div class="row">
   <%= link_to "Edit", edit_dish_path(@dish), class: 'btn btn-primary col-2' %>
   <%= link_to "Delete", dish_path(@dish), 'data-method': 'delete', 'data-confirm': 'Are you sure?', class: 'btn btn-danger col-2' %>
