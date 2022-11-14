@@ -31,7 +31,7 @@ Scenario: add new dishes in database
   And I select "John Jay" from "Hall"
   And I fill in "Property" with "halal"
   And I fill in "Calories" with "120"
-  And I press "Save Change"
+  And I press "Save Changes"
   And I should see "Marinara Sauce"
 
 Scenario: add new dishes but cancel
