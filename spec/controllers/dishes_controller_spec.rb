@@ -19,8 +19,8 @@ RSpec.describe DishesController, :type => :controller do
   describe "GET the home page" do
     it "renders the index page" do
         Dish.delete_all
-        dish1 = { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100 }
-        dish2 = { :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200 }
+        dish1 = { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100, :image => "url1"}
+        dish2 = { :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200, :image => "url2" }
         Dish.create(dish1)
         Dish.create(dish2)
       get :index
@@ -38,7 +38,7 @@ RSpec.describe DishesController, :type => :controller do
   describe "POST a new dish" do
     it "redirects to the index page" do
       Dish.delete_all
-      post :create, :dish => { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100 }
+      post :create, :dish => { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100, :image => "url1" }
       expect(response).to redirect_to dishes_path
     end
   end
@@ -46,8 +46,8 @@ RSpec.describe DishesController, :type => :controller do
   describe "GET the display page for a dish" do
     it "renders the show page" do
       Dish.delete_all
-      dish1 = { :id => 1, :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100 }
-      dish2 = { :id => 2, :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200 }
+      dish1 = { :id => 1, :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100, :image => "url1" }
+      dish2 = { :id => 2, :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200, :image => "url2" }
       Dish.create(dish1)
       Dish.create(dish2)
       get :show, :id => 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221026232517) do
+ActiveRecord::Schema.define(version: 20221108204342) do
 
   create_table "dishes", force: :cascade do |t|
     t.string  "name"
