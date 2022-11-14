@@ -25,7 +25,15 @@ Member 4 UNI: yy3089
 
 ### User Stories
 
-In iter1 for our SaaS project, the user stories we cover are for the home page and adding new dishes into our database. We designed tow senarios for our iter1. The first one is that uses should be able to see all dishes and their information on the home page for all seeded dishes. The second one is that users should be able to add new dishes to our SaaS.
+In iter2 for our SaaS project, the user stories we cover including 4 features: `manage`, `filter`, `sort `the dishes in Columbia Dining menu and save the `session`. We designed corresponding 4 senarios for our iter2:
+
+1. The first one is that uses should be able to see all dishes and their information on the home page for all seeded dishes and our users should be able to `add`, `edit`, `delete` dishes to our SaaS; 
+2. `Filtering` is the feature that our users are able to `filter the dishes` by different dining halls at Columbia University.
+3. `Sorting` is to allow our users to sort the dishes by `calories` or food `propeties`.
+4. `Session` is the feature that we use to save the cache of `old choices` of sort/filter.
+
+__Home page__
+-  `Add`, `delete` and `show` dishes in Columbia Dining menu
 
 ```
 Feature: add, delete and show dishes in Columbia Dining menu
@@ -73,7 +81,137 @@ Scenario: see Details about dishes in database
 ```
 
 
+-  `Filter dishes` in Columbia Dining menu by different halls
 
+```
+Feature: filter dishes in Columbia Dining menu
+
+  As a Columbia University student
+  So that I want to know the dishes among all Columbia dining halls
+  I want to add, delete and show dishes in Columbia dining halls
+
+Background: dishes have been added to database
+
+  Given the following dishes exist:
+  | name              | hall                 | property    | calories |
+  | Roasted Pork Loin | Ferris Booth Commons | normal      | 100      |
+  | Yello Rice        | John Jay             | gluten free | 140      |
+  | Vegetable Medley  | Ferris Booth Commons | halal       | 60       |
+  | Fish and Chips    | JJ                   | normal      | 220      |
+
+  And I am on the Columbia Dining plus plus home page
+  Then 4 seed dishes should exist
+
+Scenario: show dishes in "All"
+  When I select "All" from "cur_hall"
+  And I press "choose hall"
+  And I should see "Yello Rice"
+  And I should see "Roasted Pork Loin"
+  And I should see "Vegetable Medley"
+  And I should see "Fish and Chips"
+
+Scenario: show dishes in "John Jay's hall"
+  When I select "John Jay" from "cur_hall"
+  And I press "choose hall"
+  And I should see "Yello Rice"
+  And I should not see "Roasted Pork Loin"
+  And I should not see "Vegetable Medley"
+  And I should not see "Fish and Chips"
+
+Scenario: show dishes in "JJ hall"
+  When I select "JJ" from "cur_hall"
+  And I press "choose hall"
+  And I should not see "Yello Rice"
+  And I should not see "Roasted Pork Loin"
+  And I should not see "Vegetable Medley"
+  And I should see "Fish and Chips"
+
+Scenario: show dishes in "Ferris Booth Commons hall"
+  When I select "Ferris Booth Commons" from "cur_hall"
+  And I press "choose hall"
+  And I should not see "Yello Rice"
+  And I should see "Roasted Pork Loin"
+  And I should see "Vegetable Medley"
+  And I should not see "Fish and Chips"
+
+```
+
+- `Sort dishes` in Columbia Dining menu by propeties/calories
+
+```
+Feature: sort dishes in Columbia Dining menu
+
+  As a Columbia University student
+  So that I want to know the dishes among all Columbia dining halls
+  I want to add, delete and show dishes in Columbia dining halls
+
+Background: dishes have been added to database
+
+  Given the following dishes exist:
+  | name              | hall                 | property    | calories |
+  | Roasted Pork Loin | Ferris Booth Commons | normal      | 100      |
+  | Yello Rice        | John Jay             | gluten free | 140      |
+  | Vegetable Medley  | Ferris Booth Commons | halal       | 60       |
+  | Fish and Chips    | JJ                   | normal      | 220      |
+
+  And I am on the Columbia Dining plus plus home page
+  Then 4 seed dishes should exist
+
+Scenario: sort dishes according to their calories
+  When I follow "Calories"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+  Then I should see "Roasted Pork Loin" before "Yello Rice"
+  Then I should see "Yello Rice" before "Fish and Chips"
+
+Scenario: sort dishes according to their properties
+  When I follow "Property"
+  Then I should see "Yello Rice" before "Vegetable Medley"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+  Then I should see "Roasted Pork Loin" before "Fish and Chips"
+```
+
+- `Session`
+
+```
+Feature: test Coockie for Columbia Dining menu
+
+  As a Columbia University student
+  So that I want to know the dishes among all Columbia dining halls
+  I want to add, delete and show dishes in Columbia dining halls
+
+Background: dishes have been added to database
+
+  Given the following dishes exist:
+  | name              | hall                 | property    | calories |
+  | Roasted Pork Loin | Ferris Booth Commons | normal      | 100      |
+  | Yello Rice        | John Jay             | gluten free | 140      |
+  | Vegetable Medley  | Ferris Booth Commons | halal       | 60       |
+  | Fish and Chips    | JJ                   | normal      | 220      |
+
+  And I am on the Columbia Dining plus plus home page
+  Then 4 seed dishes should exist
+
+Scenario: sort dishes according to their calories then select a hall
+  And I should see "Roasted Pork Loin" before "Vegetable Medley"
+  When I follow "Calories"
+  Then I select "Ferris Booth Commons" from "cur_hall"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+
+Scenario: edit a dish after sorting dishes according to their calories then selecting a hall
+  And I should see "Roasted Pork Loin" before "Vegetable Medley"
+  When I follow "Calories"
+  Then I select "Ferris Booth Commons" from "cur_hall"
+  Then I should see "Vegetable Medley" before "Roasted Pork Loin"
+  Then I follow "Roasted Pork Loin"
+  And I follow "Edit"
+  And I fill in "Name" with "Roasted Pork Loin"
+  And I select "Ferris Booth Commons" from "Hall"
+  And I fill in "Property" with "normal"
+  And I fill in "Calories" with "50"
+  And I press "Update Dish Info"
+  And I follow "Back to dish list"
+  Then I should see "Roasted Pork Loin" before "Vegetable Medley"
+```
 
 
 ### Instruction
