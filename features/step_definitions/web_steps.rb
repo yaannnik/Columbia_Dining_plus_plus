@@ -59,6 +59,6 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
     expect(page).not_to have_content(text)
 end
 
-Then /^show me the page$/ do
-  save_and_open_page
-end
+# Then /^show me the page$/ do
+#   save_and_open_page
+# end

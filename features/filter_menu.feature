@@ -16,6 +16,13 @@ Background: dishes have been added to database
   And I am on the Columbia Dining plus plus home page
   Then 4 seed dishes should exist
 
+Scenario: show dishes in "All"
+  When I select "All" from "cur_hall"
+  And I press "choose hall"
+  And I should see "Yello Rice"
+  And I should see "Roasted Pork Loin"
+  And I should see "Vegetable Medley"
+  And I should see "Fish and Chips"
 
 Scenario: show dishes in "John Jay's hall"
   When I select "John Jay" from "cur_hall"
