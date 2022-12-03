@@ -37,9 +37,14 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.create!(dish_params)
-    flash[:notice] = "#{@dish.name} was successfully created."
-    redirect_to dishes_path
+    if dish_params[:calories] > "0"
+      @dish = Dish.create!(dish_params)
+      flash[:notice] = "#{@dish.name} was successfully created."
+      redirect_to dishes_path
+    else
+      flash[:notice] = "The calory value is invalid."
+      redirect_to new_dish_path
+    end
   end
 
   def edit
@@ -48,9 +53,14 @@ class DishesController < ApplicationController
 
   def update
     @dish = Dish.find(params[:id])
-    @dish.update_attributes!(dish_params)
-    flash[:notice] = "#{@dish.name} was successfully updated."
-    redirect_to dish_path(@dish)
+    if dish_params[:calories] > "0"
+      @dish.update_attributes!(dish_params)
+      flash[:notice] = "#{@dish.name} was successfully updated."
+      redirect_to dish_path(@dish)
+    else
+      flash[:notice] = "The calory value is invalid."
+      redirect_to dish_path(@dish)
+    end
   end
 
   def destroy
