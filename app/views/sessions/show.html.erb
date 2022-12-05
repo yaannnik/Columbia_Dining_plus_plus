@@ -1,0 +1,10 @@
+<div>
+    <h2>Log In</h2>
+    <%= form_tag dishes_path do %>
+        Username: <%= text_field_tag :username %><br>
+        Password: <%= password_field_tag :password %><br>
+        <!--%= submit_tag "Log In" %-->
+        <%= link_to 'Log In', dishes_path, class: 'btn btn-primary' %>
+        <%= link_to 'Create Account', new_path, class: 'btn btn-secondary' %>
+    <% end %>
+</div>

@@ -9,6 +9,8 @@ gem 'uglifier', '>= 2.7.1'
 
 gem 'jquery-rails'
 
+gem 'bcrypt', '~> 3.1.7'
+
 gem 'simplecov', require: false, group: :test
 
 group :development do
