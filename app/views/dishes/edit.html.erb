@@ -1,12 +1,12 @@
 <h2>Edit Existing Dish</h2>
-<%= form_tag dishes_path, :method => :put do %>
-  <%= label :dish, :name, 'name', class: 'col-form-label' %>
-  <%= text_field :dish, 'name', class: 'form-control' %>
-  <%= label :dish, :hall, 'hall', class: 'col-form-label'  %>
+<%= form_tag dish_path(@dish), :method => :put do %>
+  <%= label :dish, :name, 'Name', class: 'col-form-label' %>
+  <%= text_field :dish, :name, class: 'form-control' %>
+  <%= label :dish, :hall, 'Hall', class: 'col-form-label'  %>
   <%= select :dish, :hall, ['John Jay','Ferris Booth Commons','JJ'], {}, {class: 'form-control col-1'} %>
-  <%= label :dish, :property, 'property', class: 'col-form-label' %>
+  <%= label :dish, :property, 'Property', class: 'col-form-label' %>
   <%= text_field :dish, :property, class: 'form-control' %>
-  <%= label :dish, :calories, 'calories', class: 'col-form-label' %>
+  <%= label :dish, :calories, 'Calories', class: 'col-form-label' %>
   <%= text_field :dish, :calories, class: 'form-control' %>
   <br/>
   <%= submit_tag 'Update Dish Info', class: 'btn btn-primary' %>

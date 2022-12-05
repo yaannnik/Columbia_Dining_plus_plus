@@ -1,11 +1,22 @@
 <!--  This file is app/views/movies/index.html.erb -->
 <h2>All Dishes</h2>
 
+<form>
+<p>Hall select</p>
+<select name="cur_hall" id="cur_hall">
+    <% @all_halls.each do |hall| %>
+        <option value="<%= hall %>"><%= hall %></option>
+    <% end %>
+</select>
+<%= submit_tag "choose hall", :class => 'btn btn-primary' %>
+</form>
+
 <%#  Part 2: Start here... %>
 
 <table class="table table-striped col-md-12" id="dishes">
   <thead>
     <tr>
+    <th>Dish image</th>
     <th>Dish name</th>
     <th>Hall</th>
     <th>
@@ -21,6 +32,9 @@
   <tbody>
     <% @dishes.each do |dish| %>
       <tr>
+        <td>
+          <%= image_tag(dish.image, height:'100px', width:'100px') %>
+        </td>
         <td>
           <%= dish.name %>
         </td>

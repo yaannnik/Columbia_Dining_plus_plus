@@ -61,12 +61,14 @@
 }
 
 #contacts {
-    width: 1600px;
+    width: auto;
+    width: 100%;
     height: 700px;
     margin: 0 auto;
 }
- 
+
 #contacts>div {
+    width: auto;
     width: 960px;
     height: 700px;
     margin: 0 auto;
@@ -78,6 +80,7 @@
     width: 470px;
     height: 560px;
     margin-top: 70px;
+    margin-left: 30px;
 }
  
 #contacts>div>div:first-child {
@@ -103,6 +106,7 @@
  
 #email {
     height: 50px;
+    margin-top: 30px;
     margin-left: 50px;
 }
  
@@ -139,7 +143,7 @@
 }
 
 footer {
-    width: 1600px;
+    width: 100%;
     height: 400px;
     background-color: black;
     margin: 0 auto;
@@ -148,7 +152,7 @@ footer {
 }
  
 footer>div {
-    width: 1200px;
+    width: 75%;
     height: 310px;
     display: flex;
     justify-content: space-around;
@@ -157,12 +161,12 @@ footer>div {
 }
  
 footer div div {
-    width: 150px;
+    width: 12.5%;
     height: 200px;
 }
  
 footer div div:last-child {
-    width: 270px;
+    width: 17%;
     height: 200px;
 }
  

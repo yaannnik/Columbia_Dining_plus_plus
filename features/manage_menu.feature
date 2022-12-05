@@ -27,15 +27,37 @@ Scenario: show number of total dishes in database
 Scenario: add new dishes in database
   When I follow "Add new dish"
   And I should see "Create New Dish"
-  And I fill in "name" with "Marinara Sauce"
-  And I select "John Jay" from "hall"
-  And I fill in "property" with "halal"
-  And I fill in "calories" with "120"
+  And I fill in "Name" with "Marinara Sauce"
+  And I select "John Jay" from "Hall"
+  And I fill in "Property" with "halal"
+  And I fill in "Calories" with "120"
   And I press "Save Changes"
   And I should see "Marinara Sauce"
+
+Scenario: add new dishes but cancel
+  When I follow "Add new dish"
+  And I should see "Create New Dish"
+  And I fill in "Name" with "Marinara Sauce"
+  And I select "John Jay" from "Hall"
+  And I fill in "Property" with "halal"
+  And I fill in "Calories" with "120"
+  And I follow "Cancel"
+  And I should not see "Marinara Sauce"
   
-Scenario: see Details about dishes in database
+Scenario: see details about dishes in database
   When I follow "More about Yello Rice"
   And I should see "Details about Yello Rice"
   And I should see "Name: Yello Rice"
   And I should see "Hall: John Jay"
+
+Scenario: edit details about dishes in database
+  When I follow "More about Yello Rice"
+  And I follow "Edit"
+  And I fill in "Name" with "Yellow Rice"
+  And I select "John Jay" from "Hall"
+  And I fill in "Property" with "gluten free"
+  And I fill in "Calories" with "140"
+  And I press "Update Dish Info"
+  And I follow "Back to dish list"
+  And I should see "Yellow Rice"
+  And I should not see "Yello Rice"

@@ -5,6 +5,7 @@ class CreateDishes < ActiveRecord::Migration
       t.string :hall
       t.string :property
       t.integer :calories
+      t.string :image
     end
   end
 end

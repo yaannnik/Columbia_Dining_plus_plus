@@ -8,11 +8,27 @@ class DishesController < ApplicationController
   end
 
   def index
-    @dishes = Dish.with_orders(sort_by)
+    # @dishes = Dish.with_filter(@hall_filter, sort_by)
+    # @dishes = Dish.with_orders(sort_by)
     @all_halls = Dish.all_halls
-    # @dishes = Dish.all
     # @ratings_to_show_hash = ratings_hash
-    @sort_by = sort_by
+    @hall_filter = params[:cur_hall] || session[:cur_hall]
+    @sort_by = params[:sort_by] || session[:sort_by]
+
+    if params[:sort_by] != session[:sort_by]
+      session[:sort_by] = @sort_by
+      redirect_to :sort_by => @sort_by, :cur_hall => @hall_filter
+      return
+    end
+    
+    if params[:cur_hall] != session[:cur_hall] 
+      session[:sort_by] = @sort_by
+      session[:cur_hall] = @hall_filter 
+      redirect_to :sort_by => @sort_by, :cur_hall => @hall_filter
+      return
+    end
+
+    @dishes = Dish.with_filter(@hall_filter, @sort_by)
     # @dishes = Dish.all(:order => sort_by)
   end
 
@@ -21,9 +37,14 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.create!(dish_params)
-    flash[:notice] = "#{@dish.name} was successfully created."
-    redirect_to dishes_path
+    if dish_params[:calories] > "0"
+      @dish = Dish.create!(dish_params)
+      flash[:notice] = "#{@dish.name} was successfully created."
+      redirect_to dishes_path
+    else
+      flash[:notice] = "The calory value is invalid."
+      redirect_to new_dish_path
+    end
   end
 
   def edit
@@ -31,10 +52,15 @@ class DishesController < ApplicationController
   end
 
   def update
-    @dish = Dish.find params[:id]
-    @dish.update_attributes!(dish_params)
-    flash[:notice] = "#{@dish.name} was successfully updated."
-    redirect_to dishes_path(@dish)
+    @dish = Dish.find(params[:id])
+    if dish_params[:calories] > "0"
+      @dish.update_attributes!(dish_params)
+      flash[:notice] = "#{@dish.name} was successfully updated."
+      redirect_to dish_path(@dish)
+    else
+      flash[:notice] = "The calory value is invalid."
+      redirect_to dish_path(@dish)
+    end
   end
 
   def destroy
@@ -60,11 +86,11 @@ class DishesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def dish_params
-    params.require(:dish).permit(:name, :hall, :property, :calories)
+    params.require(:dish).permit(:name, :hall, :property, :calories, :image)
   end
 
   def sort_by
-    params[:sort_by]|| 'id'
+    params[:sort_by]|| 'id' || session[:sort_by]
   end
 end
 
