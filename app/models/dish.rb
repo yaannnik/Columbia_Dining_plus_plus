@@ -1,4 +1,9 @@
 class Dish < ActiveRecord::Base
+    validates :name, presence: true
+    validates :hall, presence: true
+    validates :property, presence: true
+    validates :calories, presence: true
+    
     def self.all_halls
       ['All', 'John Jay', 'JJ', 'Ferris Booth Commons']
     end
