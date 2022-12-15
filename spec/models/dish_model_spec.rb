@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Dish do
+RSpec.describe Dish, type: :model do
     describe 'new' do
       it "takes parameters and returns a Dish object" do      
         @dish = Dish.new(name: "test_dish", hall: "John Jay", property: "normal", calories: 100, :image => "url")
@@ -26,11 +26,11 @@ RSpec.describe Dish do
       end
   
       it "avoid return dishes not in databse" do
-          Dish.delete_all
-          dish1 = { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100, :image => "url1" }
-          dish2 = { :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200, :image => "url2" }
-          Dish.create(dish1)
-          Dish.create(dish2)
+        Dish.delete_all
+        dish1 = { :name => "dish1", :hall => "hall1", :property => "property1", :calories => 100, :image => "url1" }
+        dish2 = { :name => "dish2", :hall => "hall2", :property => "property2", :calories => 200, :image => "url2" }
+        Dish.create(dish1)
+        Dish.create(dish2)
   
         result = Dish.all
         expect(result.find { |dish| dish[:name] == "dish3" }).to be_nil
@@ -75,6 +75,29 @@ RSpec.describe Dish do
       result = Dish.with_filter(nil, "id")
       expect(result.find { |dish| dish[:name] == "dish1" }).to_not be_nil
       expect(result.find { |dish| dish[:name] == "dish2" }).to_not be_nil
+    end
+  end
+
+  describe 'validation test' do
+    it 'ensures name available' do
+      dish1 = Dish.new(hall: 'hall', property: 'property', calories: 100).save
+      expect(dish1).to eq(false)
+    end
+    it 'ensures hall available' do
+      dish2 = Dish.new(name: 'name', property: 'property', calories: 100).save
+      expect(dish2).to eq(false)
+    end
+    it 'ensures property available' do
+      dish3 = Dish.new(name: 'name', hall: 'hall', calories: 100).save
+      expect(dish3).to eq(false)
+    end
+    it 'ensures calories available' do
+      dish4 = Dish.new(name: 'name', hall: 'hall', property: "property").save
+      expect(dish4).to eq(false)
+    end
+    it 'should be true' do
+      dish5 = Dish.new(name: 'name', hall: 'hall', property: "property", calories: 100).save
+      expect(dish5).to eq(true)
     end
   end
 end

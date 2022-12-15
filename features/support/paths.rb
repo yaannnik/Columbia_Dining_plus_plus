@@ -16,6 +16,12 @@ module NavigationHelpers
     when /^the (Columbia Dining plus plus )?home\s?page$/ then '/dishes'
     when /^the dishes page$/ then '/dishes'
 
+    when /^the (Columbia Dining plus plus )?login\s?page$/ then '/login'
+    when /^the login page$/ then '/login'
+
+    when /^the (Columbia Dining plus plus )?register\s?page$/ then '/new'
+    when /^the register page$/ then '/new'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
