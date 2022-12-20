@@ -25,12 +25,13 @@ Member 4 UNI: yy3089
 
 ### User Stories
 
-In launch for our SaaS project, the user stories we cover including 4 features: `manage`, `filter`, `sort `the dishes in Columbia Dining menu and save the `session`, and for the users in our system, we cover the `register`and `login` features for our user stories . We designed corresponding 4 senarios for our iter2:
+In launch for our SaaS project, the user stories we cover including 4 features: `manage`, `filter`, `sort `the dishes in Columbia Dining menu and save the `session`, and for the users in our system, we cover the `register`and `login` features for our user stories . We designed the follwoing user stories for our SaaS application:
 
 1. The first one is that uses should be able to see all dishes and their information on the home page for all seeded dishes and our users should be able to `add`, `edit`, `delete` dishes to our SaaS; 
 2. `Filtering` is the feature that our users are able to `filter the dishes` by different dining halls at Columbia University.
 3. `Sorting` is to allow our users to sort the dishes by `calories` or food `propeties`.
 4. `Session` is the feature that we use to save the cache of `old choices` of sort/filter.
+5. `User Features` for the login and register functions.
 
 __Home page__
 -  `Add`, `delete` and `show` dishes in Columbia Dining menu
